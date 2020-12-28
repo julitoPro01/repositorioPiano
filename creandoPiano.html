@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<title>
+</title>
+<style>
+#h1{
+color:red;
+text-align:center;
+text-decoration:underline dotted ;
+
+
+}
+
+#hola{
+text-align:center;}
+
+button{
+margin-top:18px;
+width:50px;
+height:150px;
+background-color:yellow;
+float:left;
+padding:2px;
+margin-left:5px;
+
+}
+button:hover{
+background-color:blue;
+}
+button:before{
+content:'M.';
+}
+p{
+margin-left:15px;
+float:left;
+overflow-y:scroll;
+text-shadow:fuchsia 2px 2px;
+}
+
+</style>
+<script>
+ window.onload = function(){
+
+var buttons = document.querySelectorAll('button');
+    buttons.forEach(function(button){
+    button.addEventListener('click',activarSonido);
+	});
+}
+	function activarSonido(event){
+	var button = event.target;
+	var note = button.dataset.note;
+
+	var audio = document.getElementById('boton'+ note);
+	
+	audio.pause();
+	audio.currentTime = 0;
+	audio.play();
+	}
+ document.addEventListener('keydown',event =>{
+     const key = event.key;
+     const button = document.querySelector(`button[data-key="${key}"]`);
+     if(button){
+         button.click();
+     }
+ });
+ 
+
+</script>
+</head>
+<body>
+<h1 id="h1" style="" data-key="">LAS SIETE NOTAS MUSICALES </h1>
+<h2 id="hola" > NOTAS MUSICALES </h2>
+<section>
+
+    <button data-note="Do" data-key="1">DO</button>
+    <button data-note="Re" data-key="2">RE</button>
+    <button data-note="Mi" data-key="3">MI</button>
+    <button data-note="Fa" data-key="4">FA</button>
+    <button data-note="Sol" data-key="5">SOL</button>
+    <button data-note="La" data-key="6">LA</button>
+    <button data-note="Si" data-key="7">SI</button>
+
+    <audio src="Nueva carpeta/do.wav" id="botonDo" ></audio>
+    <audio src="Nueva carpeta/re.wav" id="botonRe" ></audio>
+    <audio src="Nueva carpeta/mi.wav" id="botonMi" ></audio>
+    <audio src="Nueva carpeta/fa.wav" id="botonFa" ></audio>
+    <audio src="Nueva carpeta/sol.wav" id="botonSol" ></audio>
+    <audio src="Nueva carpeta/la.wav" id="botonLa" ></audio>
+    <audio src="Nueva carpeta/si.wav" id="botonSi" ></audio>
+	
+   
+</section>
+<div>
+<p style="border:solid 5px blue;width:150px;height:150px;" data-key="">Las notas musicales son do re mi fa sol la si.<br/>
+ Sus nombres tienen un curioso origen y se escriben <br/>
+ en el pentagrama según su altura y duración. <br/>
+ Estas notas también pueden llevar alteraciones y pueden escribirse en una clave u otra según el instrumento que toques.<br/>
+ <img width="80px "src="" data-key="">
+
+ </p>
+ 
+</div>
+
+</script>
+</body>
+</html>
